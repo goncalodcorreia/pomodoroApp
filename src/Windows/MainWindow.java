@@ -93,11 +93,21 @@ public class MainWindow extends Application{
 
 
         }else{
+            tasks = new ArrayList<Task>();
             Label noTasks = new Label("You have no tasks!");
             noTasks.setAlignment(Pos.CENTER);
+
+            //This code shouldn't be as stated. i need to change this.
             Button addTasks = new Button("Add Task");
-            addTasks.setOnAction(e -> TaskCreationWindow.display());
-                addTasks.setAlignment(Pos.CENTER);
+            addTasks.setOnAction(e ->{
+                Task x = TaskCreationWindow.display();
+                if(x != null){
+                    System.out.println(tasks);
+                    tasks.add(x);
+
+                }
+            });
+            addTasks.setAlignment(Pos.CENTER);
 
             centerLayout.getChildren().addAll(noTasks,addTasks);
         }
@@ -121,7 +131,8 @@ public class MainWindow extends Application{
 
     }
 
-    public void setUsername(){
+
+    private void setUsername(){
         //Setup Username
         while(name == null || name.isEmpty()) {
             name = Windows.PromptWindow.display("Login", "Username:","username");
@@ -129,7 +140,7 @@ public class MainWindow extends Application{
 
     }
 
-    public void loadData(){
+    private void loadData(){
         TaskIO  t = new TaskIO();
         tasks = t.readTaskList(name.trim()+ ".txt");
 
@@ -143,5 +154,8 @@ public class MainWindow extends Application{
     public static MainWindow getINSTANCE(){
         return INSTANCE;
     }
+
+    public ArrayList<Task> getTasks(){ return tasks; }
+
 
 }
