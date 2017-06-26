@@ -15,5 +15,13 @@ Static methods. I'm not sure if this is the best approach.
 Once again, thank you for your time, i hope you can learn something from this (Even if it is how NOT to do something :D), and also help me learn along the process!
 
 
+[List of Current Problems]
+
+-Can't make a the taskName verification work, (could be because i'm using some sort
+of concurrent acess without threads)
+
+-Can't update the MainWindow from the moment where you don't have tags to the moment
+where you start getting tags.
+
 
 
