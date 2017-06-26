@@ -54,8 +54,14 @@ public class TaskCreationWindow {
 
         Button submit = new Button("Submit");
         GridPane.setConstraints(submit,1,3);
-        submit.setOnAction(e->
-                taskMade = validateInfo(taskNameInsert.getText(),defaultPomodoroInsert.getText(),tagsInsert.getText()));
+        submit.setOnAction(e-> {
+                    System.out.println(taskNameInsert.getText());
+                    System.out.println(defaultPomodoroInsert.getText());
+                    System.out.println(tagsInsert.getText());
+
+                    taskMade = validateInfo(taskNameInsert.getText(), defaultPomodoroInsert.getText(), tagsInsert.getText());
+                    taskStage.close();
+                });
 
 
         layout.getChildren().addAll(taskName,taskNameInsert,defaultPomodoro,defaultPomodoroInsert,tags,tagsInsert,submit);
@@ -76,11 +82,11 @@ public class TaskCreationWindow {
             String[] auxTags = tags.trim().split(";");
 
             LinkedList<String> temptags = new LinkedList<String>();
+            System.out.println("Current array that im using contains :" + MainWindow.getINSTANCE().getTasks());
             for(Task x : MainWindow.getINSTANCE().getTasks()) {
                 if (x.getTaskName().equalsIgnoreCase(taskName)) {
                     AlarmWindow.display("Error", "Task already exists!");
                     return null;
-
                 }
             }
             tempTaskName = taskName;

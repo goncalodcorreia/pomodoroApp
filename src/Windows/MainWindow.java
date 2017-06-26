@@ -102,13 +102,12 @@ public class MainWindow extends Application{
             addTasks.setOnAction(e ->{
                 Task x = TaskCreationWindow.display();
                 if(x != null){
-                    System.out.println(tasks);
                     tasks.add(x);
+                    System.out.println(tasks);
 
                 }
             });
-            addTasks.setAlignment(Pos.CENTER);
-
+            
             centerLayout.getChildren().addAll(noTasks,addTasks);
         }
 
