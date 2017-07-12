@@ -141,6 +141,7 @@ public class MainWindow extends Application{
 
     private void loadData(){
         TaskIO  t = new TaskIO();
+        String realName = name + ".txt";
         tasks = t.readTaskList(name.trim()+ ".txt");
 
         if(tasks == null){

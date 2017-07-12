@@ -19,7 +19,8 @@ public class TaskIO {
     public  ArrayList<Task> readTaskList(String fileName){
         ArrayList<Task> tasks = new ArrayList<>();
         try{
-            Scanner scan = new Scanner(new File(fileName));
+            File f = new File("C:\\Users\\Correia\\Dropbox\\JavaProjects\\PomodoroApp\\" + fileName);
+            Scanner scan = new Scanner(f);
             while(scan.hasNextLine()) {
                 String[] tokens = scan.nextLine().trim().split(";");
                 try {
